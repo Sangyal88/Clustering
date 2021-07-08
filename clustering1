@@ -1,0 +1,9 @@
+im = imread('Images/peppers.png');
+if (size(im,3) ~= 1)    % for color image size(im,3)==3
+    im1 = rgb2gray(im);   %converting to grayscale
+elseif (size(im,3) == 1)
+    im1 = im;
+end
+Ck = 999;
+x = double(im1);
+[mindistvalue, index_i, index_j]= pointdistance(x, 1, 2, Ck);
