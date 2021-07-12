@@ -12,5 +12,7 @@ m=zeros(row,col);
 min=double(m);
 [mindistvalue, index_i, index_j, Mdist]= pointdistance(A, 1, 2, Ck);
 fprintf('\n');
+fprintf('MinVal=%i', mindistvalue);
+fprintf('\n');
 fprintf('index_i=%i, index_j=%i',index_i,index_j);
 fprintf('\n');
