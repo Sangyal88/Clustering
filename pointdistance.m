@@ -39,6 +39,11 @@ for i = 1:row
                 continue %skip this particular element
             else % for all other element; process them
                 minVal(i,j) = abs(val - X(ind_i, ind_j));
+                %fprintf('\n');
+                %fprintf('i=%i\t',i);
+                %fprintf('j=%i\t',j);
+                %fprintf('MinVal=%i',minVal(i,j));
+                %fprintf('\n');
                 if (mindistvalue > minVal(i,j))
                     mindistvalue = minVal(i,j);
                     index_i = i;
