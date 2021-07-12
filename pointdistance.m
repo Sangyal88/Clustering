@@ -29,6 +29,7 @@ function [mindistvalue, index_i, index_j] = pointdistance(X, ind_i, ind_j, Ck)
 %X=int16(X);
 %A=double(X);
 [row,col] = size(X);
+minVal=int16(min);% for storing the calculated distance values
 mindistvalue = 9999; % some arbitrary large value
 for i = 1:row
     for j = 1 : col
@@ -37,9 +38,9 @@ for i = 1:row
             if (ind_i == i ) && (ind_j == j)
                 continue %skip this particular element
             else % for all other element; process them
-                minVal = abs(val - X(ind_i, ind_j));
-                if (mindistvalue > minVal)
-                    mindistvalue = minVal;
+                minVal(i,j) = abs(val - X(ind_i, ind_j));
+                if (mindistvalue > minVal(i,j))
+                    mindistvalue = minVal(i,j);
                     index_i = i;
                     index_j = j;
                 end
