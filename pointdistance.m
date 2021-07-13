@@ -1,4 +1,4 @@
-function [minVal, mindistvalue, index_i, index_j] = pointdistance(X, ind_i, ind_j, Ck)
+function [minVal, mindistvalue, index_i, index_j, minVal] = pointdistance(X, ind_i, ind_j, Ck)
 %===================================================================
 % Point Distance with Matrix, Version 1.0
 % Copyright(c) 2021 Amit Gurung and Sangyal Lama Tamang
