@@ -13,7 +13,7 @@ A=int16(im1);
 %A=double(im1);
 m=zeros(row,col);
 min=double(m);
-[mindist, mindistvalue, index_i, index_j]= pointdistance(A, 1, 2, Ck);
+[mindist, mindistvalue, index_i, index_j, mid]= pointdistance(A, 1, 2, Ck);
 fprintf('\n');
 fprintf('MinVal=%i', mindistvalue);
 A=double(im1);
