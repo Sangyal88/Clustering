@@ -1,4 +1,4 @@
-function [mindistvalue, index_i, index_j] = pointdistance(X, ind_i, ind_j, Ck)
+function [minVal, mindistvalue, index_i, index_j] = pointdistance(X, ind_i, ind_j, Ck)
 %===================================================================
 % Point Distance with Matrix, Version 1.0
 % Copyright(c) 2021 Amit Gurung and Sangyal Lama Tamang
@@ -18,18 +18,19 @@ function [mindistvalue, index_i, index_j] = pointdistance(X, ind_i, ind_j, Ck)
 % 
 %%Function to compute minimum distance of an element in the Matrix X, the
 %element with which the distance to be computed is given by the index
-%(ind_i, ind_j) of the same matrix X. On return the function returns the
-%minimum distance value as mindistvalue and the corresponding minimum
-%distance element in the Matrix M is given by the indices (index_i,index_j)
+%(ind_i, ind_j) of the same matrix X. On return the function returns an
+%Array of minimum distance value as mindistvalue and the corresponding 
+%minimum distance element in the Matrix M is given by the indices 
+%(index_i,index_j)
 %Note: The comparing process skips an element in the Matrix X, when the
 %element has a special-constant value say Ck=999. Moreover, the element 
 %formed by the indices (ind_i, ind_j) also to be skipped in the comparison. 
 
-%[mindistvalue, index_i, index_j] = pointdistance(X,ind_i, ind_j, Ck)
+%[mindist, mindistvalue, index_i, index_j] = pointdistance(X,ind_i, ind_j, Ck)
 %X=int16(X);
 %A=double(X);
 [row,col] = size(X);
-minVal=int16(min);% for storing the calculated distance values
+minVal=zeros(row,col)+Ck;% Initialize constant value 999 to all elements
 mindistvalue = 9999; % some arbitrary large value
 for i = 1:row
     for j = 1 : col
