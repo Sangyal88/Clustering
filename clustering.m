@@ -15,8 +15,8 @@ m=zeros(row,col);
 min=double(m);
 
 k=2;%No. of Clusters
-c1=zeros(row,col);%cluster 1
-c2=zeros(row,col);%cluster 2
+c1= null(row,col);%cluster 1
+c2= null(row,col);%cluster 2
 c1=int16(c1);
 c2=int16(c2);
 n=numel(A);%total elements in A
