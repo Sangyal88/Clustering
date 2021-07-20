@@ -21,12 +21,28 @@ c1=int16(c1);
 c2=int16(c2);
 n=numel(A);%total elements in A
 t=0.75*(n/k);%75 percent
-[c1,c2] = Pdistance2(X, c1, c2, k, Ck, 1, 2, t, min );
+%[c1,c2] = Pdistance2(X, c1, c2, k, Ck, 1, 2, t, min );
 
-[mindist, mindistvalue, index_i, index_j, mid]= pointdistance(A, 1, 2, Ck);
-fprintf('\n');
-fprintf('MinVal=%i', mindistvalue);
-A=double(im1);
-fprintf('index_i=%i, index_j=%i',index_i,index_j);
-fprintf('\n');
-fprintf('Minimum Distance Matrix:');
+for i=1 : 5%row
+    for j= 1: 5%col
+       [mindistvalue, ind_i, ind_j,mid]= pointdistance(A, i, j, Ck, min);
+       if(nnz(c1)<=t)%nnz counts the number of non zero elements
+            c1(i,j)=A(i,j);
+            c1(ind_i,ind_j)=A(ind_i,ind_j);
+            A(ind_i,ind_j)=Ck;
+            A(i,j)=Ck;
+       else
+            c2(i,j)=A(i,j);
+            c2(ind_i,ind_j)=A(ind_i,ind_j);
+            A(ind_i,ind_j)=Ck;
+            A(i,j)=Ck;
+       end
+    end
+end    
+%[mindist, mindistvalue, index_i, index_j, mid]= pointdistance(A, 1, 2, Ck);
+%fprintf('\n');
+%fprintf('MinVal=%i', mindistvalue);
+%A=double(im1);
+%fprintf('index_i=%i, index_j=%i',index_i,index_j);
+%fprintf('\n');
+%fprintf('Minimum Distance Matrix:');
