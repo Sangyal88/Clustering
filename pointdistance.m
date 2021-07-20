@@ -1,4 +1,4 @@
-function [minVal, mindistvalue, index_i, index_j, minVal] = pointdistance(X, ind_i, ind_j, Ck)
+function [index_i, index_j] = pointdistance(X, ind_i, ind_j, Ck)
 %===================================================================
 % Point Distance with Matrix, Version 1.0
 % Copyright(c) 2021 Amit Gurung and Sangyal Lama Tamang
@@ -29,24 +29,20 @@ function [minVal, mindistvalue, index_i, index_j, minVal] = pointdistance(X, ind
 %[mindist, mindistvalue, index_i, index_j] = pointdistance(X,ind_i, ind_j, Ck)
 %X=int16(X);
 %A=double(X);
-[row,col] = size(X);
-minVal=zeros(row,col)+Ck;% Initialize constant value 999 to all elements
+
+[row, col] = size(X);
+%minVal=zeros(row, col)+Ck;% Initialize constant value 999 to all elements
 mindistvalue = 9999; % some arbitrary large value
 for i = 1:row
     for j = 1 : col
         val = X(i,j);
         if (Ck ~= val) % only then do the comparision
-            if (ind_i == i ) && (ind_j == j)
+            if ind_i == i  && ind_j == j
                 continue %skip this particular element
             else % for all other element; process them
-                minVal(i,j) = abs(val - X(ind_i, ind_j));
-                %fprintf('\n');
-                %fprintf('i=%i\t',i);
-                %fprintf('j=%i\t',j);
-                %fprintf('MinVal=%i',minVal(i,j));
-                %fprintf('\n');
-                if (mindistvalue > minVal(i,j))
-                    mindistvalue = minVal(i,j);
+                diffValue = abs(val - X(ind_i, ind_j));
+                if (mindistvalue > diffValue)
+                    mindistvalue = diffValue;
                     index_i = i;
                     index_j = j;
                 end
