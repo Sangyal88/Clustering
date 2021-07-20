@@ -11,6 +11,7 @@ Ck = 999;
 [row,col]=size(im1);
 A=int16(im1);
 %A=double(im1);
+A1=A;
 m=zeros(row,col);
 min=double(m);
 
@@ -27,15 +28,15 @@ for i=1 : row
     for j= 1: col
        [mindistvalue, index_i, index_j,mid]= pointdistance(A, i, j, Ck, min);
        if(nnz(c1)<=t)%nnz counts the number of non zero elements
-            c1(i,j)=A(i,j);
-            c1(index_i,index_j)=A(index_i,index_j);
-            A(index_i,index_j)=Ck;
-            A(i,j)=Ck;
+            c1(i,j)=A1(i,j);
+            c1(index_i,index_j)=A1(index_i,index_j);
+            A1(index_i,index_j)=Ck;
+            A1(i,j)=Ck;
        else
-            c2(i,j)=A(i,j);
-            c2(index_i,index_j)=A(index_i,index_j);
-            A(index_i,index_j)=Ck;
-            A(i,j)=Ck;
+            c2(i,j)=A1(i,j);
+            c2(index_i,index_j)=A1(index_i,index_j);
+            A1(index_i,index_j)=Ck;
+            A1(i,j)=Ck;
        end
     end
 end    
