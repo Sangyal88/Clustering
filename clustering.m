@@ -23,18 +23,18 @@ n=numel(A);%total elements in A
 t=0.75*(n/k);%75 percent
 %[c1,c2] = Pdistance2(X, c1, c2, k, Ck, 1, 2, t, min );
 
-for i=1 : 5%row
-    for j= 1: 5%col
-       [mindistvalue, ind_i, ind_j,mid]= pointdistance(A, i, j, Ck, min);
+for i=1 : row
+    for j= 1: col
+       [mindistvalue, index_i, index_j,mid]= pointdistance(A, i, j, Ck, min);
        if(nnz(c1)<=t)%nnz counts the number of non zero elements
             c1(i,j)=A(i,j);
-            c1(ind_i,ind_j)=A(ind_i,ind_j);
-            A(ind_i,ind_j)=Ck;
+            c1(index_i,index_j)=A(index_i,index_j);
+            A(index_i,index_j)=Ck;
             A(i,j)=Ck;
        else
             c2(i,j)=A(i,j);
-            c2(ind_i,ind_j)=A(ind_i,ind_j);
-            A(ind_i,ind_j)=Ck;
+            c2(index_i,index_j)=A(index_i,index_j);
+            A(index_i,index_j)=Ck;
             A(i,j)=Ck;
        end
     end
