@@ -48,6 +48,6 @@ for i=1 : row
         end
     end
 end
-
+r = int16(0+255* rand(1,k)); % two random between 0 and 255
 %c3 = uint8(c1);
 %c4 = uint8(c2);
