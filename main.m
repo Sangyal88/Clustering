@@ -20,6 +20,6 @@ n = numel(A); %total elements in A
 t = 0.5*(n/k); %75 percent
 countelement=0;
 [ c1,c2 ] = cluster( Ck,A1,c1,c2,t,countelement );
-r = int16(0+255* rand(1,k)); % two random between 0 and 255
+r = int16(0+255* rand(1,k)); % two random numbers between 0 and 255
 %c3 = uint8(c1);
 %c4 = uint8(c2);
