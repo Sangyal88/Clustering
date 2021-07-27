@@ -1,4 +1,4 @@
-function [ c1,c2 ] = cluster( Ck,A1,c1,c2,t,countelement )
+function [ c1,c2, A1 ] = cluster( Ck,A1,c1,c2,t,countelement )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 [row,col]=size(A1);
