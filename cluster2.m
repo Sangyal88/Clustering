@@ -1,13 +1,12 @@
-function [ Cs, A1 ] = cluster2( Ck,nk,A1,Cs,t,countelement )
+function [ Cs, A1 ] = cluster2( Ck,nk,A1,Cs,t )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 [row,col]=size(A1);
 x=1;
-
+countelement = 0;
    for i=1 : row
         for j= 1: col
-            val = A1(i, j);
-            while(x<nk-1)
+            val = A1(i, j);            
                 if (val ~= Ck)
                     [index_i, index_j] = pointdistance(A1, i, j, Ck);
                     Cs(x).c(i, j) = A1(i, j);
@@ -20,14 +19,12 @@ x=1;
                     fprintf('\n');
                     if (countelement >= t) 
                         countelement=0;
+                        x = x + 1;
                         break;
                     end
-                   
-                 end
-            end
-        end
-         
-        if (countelement >= t) 
+                end
+        end         
+        if (countelement >= t && x == nk)
             break; %outer loop
         end
     end
