@@ -20,29 +20,6 @@ for z=1:nk
     fk(z)=0;
     Cs(z).C =zeros(row,col);    
 end
-r = int16(0+255* rand(1,nk)); %random between 0 and 255
-for z=1:nk
-    min=r(z);f=0;
-    for p=z+1:nk
-        if(r(p)<min)
-            min=r(p);
-            index=p; f=1;
-        end
-    end
-    if(f==1)
-        min=r(index);
-        r(index)=r(z);
-        r(z)=min;                   
-    end
-end
-k=r; %%Now k(z) will have random initial centroid values
-for z=1:nk         
-    n(z)=int16(n(z)); 
-    Cs(z).C =int16(Cs(z).C);
-    fprintf('   k%d     c%d',z,z)
-end
-im1=int16(im1);
-fprintf('\n')
 tic
 %[ c1,c2 ] = cluster( Ck,A1,c1,c2,t,countelement );
 %grayIm1(nk,k,Cs,n,fk,A1);
