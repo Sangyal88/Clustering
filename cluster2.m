@@ -15,8 +15,6 @@ countelement = 0;
                     A1(index_i,index_j)=Ck;
                     A1(i,j)=Ck;
                     countelement = countelement + 2;
-                    fprintf('The value of count=%i',countelement);
-                    fprintf('\n');
                     if (countelement >= t) 
                         countelement=0;
                         x = x + 1;
