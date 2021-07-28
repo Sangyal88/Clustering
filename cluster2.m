@@ -7,7 +7,7 @@ x=1;
    for i=1 : row
         for j= 1: col
             val = A1(i, j);
-            %while(x<nk-1)
+            while(x<nk-1)
                 if (val ~= Ck)
                     [index_i, index_j] = pointdistance(A1, i, j, Ck);
                     Cs(x).c(i, j) = A1(i, j);
@@ -24,7 +24,7 @@ x=1;
                     end
                    
                  end
-            %end
+            end
         end
          
         if (countelement >= t) 
