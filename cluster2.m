@@ -35,6 +35,14 @@ for i=1 : row
         end
     end
 end
+for n=1:nk
+    Cs(n).centroid = int16(sum(Cs(n).c(:))/nnz(Cs(n).c(:))); 
+end
+for z=1:nk
+        fprintf('      %i\t        ',Cs(z).centroid)  
+        %n(z) = k(z);
+end
+fprintf('\n')
 
 
 end
