@@ -1,4 +1,4 @@
-function [ Cs, A1 ] = cluster2( Ck,nk,A1,Cs,t )
+function [ Cs, A1 ] = initial_centroid( Ck,nk,A1,Cs,t )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 [row,col]=size(A1);
