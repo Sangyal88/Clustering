@@ -21,5 +21,5 @@ end
 tic
 %[ c1,c2 ] = cluster( Ck,A1,c1,c2,t,countelement );
 %grayIm1(nk,k,Cs,n,fk,A1);
-[ Cs, A1 ] = cluster2( Ck,nk,A1,Cs,t);
+[ Cs, A1 ] = initial_centroid( Ck,nk,A1,Cs,t);
 toc
