@@ -16,6 +16,7 @@ fprintf('\n')
 for z=1:nk
     Cs(z).C =zeros(row,col);   
     Cs(z).centroid =0; 
+    fprintf('   Centroid%d        ',z)
 end
 tic
 %[ c1,c2 ] = cluster( Ck,A1,c1,c2,t,countelement );
