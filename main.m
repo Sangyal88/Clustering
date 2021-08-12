@@ -17,6 +17,9 @@ for z=1:nk
     k(z)=0;
     n(z)=0;
     fk(z)=0;
+    k(z)=int16(k(z)); 
+    n(z)=int16(n(z)); 
+    fk(z)=int16(fk(z));
     Cs(z).C =zeros(row,col);   
     Cs(z).centroid =0; 
     fprintf('   k%d     c%d    ',z,z)
