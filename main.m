@@ -14,9 +14,12 @@ t = 0.5*(n/nk); %75 percent
 fprintf('\n')
 [row,col]=size(im1);
 for z=1:nk
+    k(z)=0;
+    n(z)=0;
+    fk(z)=0;
     Cs(z).C =zeros(row,col);   
     Cs(z).centroid =0; 
-    fprintf('   Centroid%d        ',z)
+    fprintf('   k%d     c%d    ',z,z)
 end
 tic
 %[ c1,c2 ] = cluster( Ck,A1,c1,c2,t,countelement );
