@@ -14,7 +14,7 @@ t = 0.5*(n/nk); %75 percent
 fprintf('\n')
 [row,col]=size(im1);
 for z=1:nk
-    k(z)=0;
+    r(z)=0;
     n(z)=0;
     fk(z)=0;
     k(z)=int16(k(z)); 
@@ -28,4 +28,5 @@ tic
 %[ c1,c2 ] = cluster( Ck,A1,c1,c2,t,countelement );
 %grayIm1(nk,k,Cs,n,fk,A1);
 [ Cs, A1 ] = initial_centroid( Ck,nk,A1,Cs,t);
+[ nk,Cs,n,fk,A ] = centroid( nk,Cs,n,fk,A );
 toc
