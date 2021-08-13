@@ -66,7 +66,7 @@ end
                             for i=1:row 
                                 for j=1:col
                                     if(Cs(index).c(i,j) > Cs(index).centroid)
-                                        Cs(p).C(i,j)=Cs(index).C(i,j);                      
+                                        Cs(p).c(i,j)=Cs(index).c(i,j);                      
                                     end
                                 end
                             end  
