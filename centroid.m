@@ -47,11 +47,9 @@ function [ nk,Cs,n,fk,A ] = centroid( nk,Cs,n,fk,A )
     end
     if (flag1==0)                  
         [nk,Cs,n,fk,A]=centroid(nk,Cs,n,fk,A);
-        %centroid(nk,Cs,n,fk,A);
-        %gray1(nk,k,Cs,n,fk,A);
     else
         [nk,Cs,A]=disp1(f1,nk,Cs,A);
-        %pnsr1(A, f1);
+        
     end
 end
 
