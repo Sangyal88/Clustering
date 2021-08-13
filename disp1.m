@@ -6,7 +6,7 @@ function [f1,nk,Cs,A1] = disp1(f1,nk,Cs,A1)
     for z = 1:nk
         for i=1:row 
             for j=1:col               
-                if((Cs(z).C(i,j))~=0)
+                if((Cs(z).c(i,j))~=0)
                     f1(i,j)=Cs(z).centroid;
                 end              
             end
