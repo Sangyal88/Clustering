@@ -28,13 +28,13 @@ function [ nk,Cs,n,fk,A ] = centroid( nk,Cs,n,fk,A )
                 end
              end
              if(r==1)
-                Cs(z).C(i,j) = A(i,j);   
+                Cs(z).c(i,j) = A(i,j);   
              end
         end
     end 
  end
     for z=1:nk
-        Cs(z).centroid=int16(sum(Cs(z).C(:)) / nnz(Cs(z).C(:)));
+        Cs(z).centroid=int16(sum(Cs(z).c(:)) / nnz(Cs(z).c(:)));
         if(isequal(n(z),Cs(z).centroid)==1)
             fk(z)=1;
         else
