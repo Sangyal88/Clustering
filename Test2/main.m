@@ -1,4 +1,4 @@
-im = imread('Images/fruitssmall.png');
+im = imread('fruitssmall.png');
 %im = imread('Images/boat.png');
 if (size(im,3) ~= 1)    % for color image size(im,3)==3
     im1 = rgb2gray(im);   %converting to grayscale
@@ -13,8 +13,11 @@ tic
 %grayIm1(nk,k,Cs,n,fk,A1);
 %[ Cs, A1 ] = cluster2( Ck,nk,A1,Cs,t);
 %[ nk,Cs,n,fk,A ] = centroid( nk,Cs,n,fk,A );
+
+nk = input('Enter the number of cluster : ');
+
 [ temp, h, l ] = pointdistance(A1);
 
-[ c, temp1 ] = cluster_2( l, h, temp, A1);
+[ c, temp1 ] = cluster_2( l, h, temp, A1, nk);
 
 toc
