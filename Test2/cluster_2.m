@@ -36,7 +36,7 @@ function [ c, temp ] = cluster_2( l, h, temp, A1, nk)
         end
         count=count+1;
         n=n+1;
-
+        c(k).centroid=int16(sum(c(k).clus(:))/nnz(c(k).clus(:)));
     end
      fprintf('The value of k is %i',k);
      fprintf('\n');
