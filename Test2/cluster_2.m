@@ -14,6 +14,7 @@ function [ c, temp ] = cluster_2( l, h, temp, A1, nk)
     groupSize = ceil((h-l)/(nk-1));
     
     count=0;
+    c().centroid =0;%centroid
     while(n<h+1)
 
         for i=1:row
