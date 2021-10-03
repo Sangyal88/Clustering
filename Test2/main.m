@@ -18,6 +18,7 @@ nk = input('Enter the number of cluster : ');
 
 [ temp, h, l ] = pointdistance(A1);
 
-[ c, temp1 ] = cluster_2( l, h, temp, A1, nk);
+[ c, temp1, k ] = cluster_2( l, h, temp, A1, nk);
 
 toc
+[f1,A1] = disp1(k,c,A1);
