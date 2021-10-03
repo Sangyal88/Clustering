@@ -1,4 +1,4 @@
-im = imread('fruitssmall.png');
+im = imread('fruits.png');
 %im = imread('Images/boat.png');
 if (size(im,3) ~= 1)    % for color image size(im,3)==3
     im1 = rgb2gray(im);   %converting to grayscale

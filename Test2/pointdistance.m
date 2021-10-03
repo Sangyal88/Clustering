@@ -13,10 +13,10 @@ function [ temp, h, l ] = pointdistance(X)
     end
     high = max(temp);
     h = max(high);
-    h
+    %h
     lowest = min(temp);
     l = min(lowest);
-    l
+    %l
     return
 end
 
