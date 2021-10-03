@@ -1,7 +1,7 @@
 
 
 
-function [ c, temp ] = cluster_2( l, h, temp, A1, nk)
+function [ c, temp, k ] = cluster_2( l, h, temp, A1, nk)
     %UNTITLED Summary of this function goes here
     % Sir, please describe the function
     %   Detailed explanation goes here
