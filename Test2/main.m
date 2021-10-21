@@ -20,5 +20,6 @@ nk = input('Enter the number of cluster : ');
 
 [ c, temp1, k ] = cluster_2( l, h, temp, A1, nk);
 
+plotScree(A1, nk);
 toc
 [f1,A1] = disp1(k,c,A1);
