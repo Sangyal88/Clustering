@@ -1,6 +1,6 @@
 function wss = plotScree(X1, n)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%Function to plot Elbow value for optimal K value 
+%  
 X=double(X1);
 wss = zeros(1, n);
 wss(1) = (size(X, 1)-1) * sum(var(X, [], 1));
