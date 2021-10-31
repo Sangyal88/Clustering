@@ -30,7 +30,7 @@ for i= 2:m
 %plotScree(A1, nk, h, l, temp);
 %[sse1,A1]=SSE(nk,c,A1);
 %for i=2:m
-[sse1, im1]=SSE(i,c,cen,se,A1);
+[sse1, im1]=SSE(i,c,cen,A1);
 s(a,1)= i;
 s(a,2)=sse1;
 a=a+1;
