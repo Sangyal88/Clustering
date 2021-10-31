@@ -1,5 +1,5 @@
 %% 
-function [sse1,im1]=SSE(nk,c,cen,se,im1)
+function [sse1,im1]=SSE(nk,c,cen,im1)
     [row,col]=size(im1); 
     %sse1=double(sse1);
      sse1=0;
