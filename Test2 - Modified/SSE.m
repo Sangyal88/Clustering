@@ -9,8 +9,6 @@ function [sse1,im1]=SSE(nk,c,cen,se,im1)
     %sse = zeros(1, nk);
     fprintf('Value of nk is  %i',nk);
     fprintf('\n');
-    fprintf('Value of centroid is  %i',cen(nk));
-    fprintf('\n');
     for z=1:nk
         
        for i=1:row
@@ -26,6 +24,6 @@ function [sse1,im1]=SSE(nk,c,cen,se,im1)
             end
         end 
     end
-    fprintf('Inside value %i',sse1);
+    fprintf('SSE value %i',sse1);
     fprintf('\n');
 end
