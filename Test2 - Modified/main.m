@@ -26,18 +26,13 @@ for i= 2:m
 [ temp, h, l ] = pointdistance(A1);
 
 [ c, temp1, k, cen ] = cluster_2( l, h, temp, A1, i);
-fprintf('Value of the index %i',c(1).clus(1,1));
-fprintf('\n');
-fprintf('Value of the centroid %i',cen(1));
-fprintf('\n');
+
 %plotScree(A1, nk, h, l, temp);
 %[sse1,A1]=SSE(nk,c,A1);
 %for i=2:m
 [sse1, im1]=SSE(i,c,cen,se,A1);
 s(a,1)= i;
 s(a,2)=sse1;
-fprintf('%i',sse1);
-fprintf('\n');
 a=a+1;
 end
 hold on
