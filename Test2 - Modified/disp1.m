@@ -4,6 +4,7 @@ function [f1,A1] = disp1(k,c,cen,A1)
 %     for z=1:nk
 %       figure,imshow(uint8(Cs(z).C));title(sprintf('Final C%d',z));
 %     end
+%for z = 1:k %Deepika's version
     for i=1:row 
         for j=1:col               
             for z = 1:k
