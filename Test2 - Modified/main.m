@@ -1,4 +1,6 @@
-im = imread('Images/fruits.png');
+ im = imread('Images/fruits.png');
+%im = imread('Images/fruitssmall.png');
+
 %im = imread('Images/boat.png');
 if (size(im,3) ~= 1)    % for color image size(im,3)==3
     im1 = rgb2gray(im);   %converting to grayscale
@@ -17,28 +19,27 @@ tic
 %[ Cs, A1 ] = cluster2( Ck,nk,A1,Cs,t);
 %[ nk,Cs,n,fk,A ] = centroid( nk,Cs,n,fk,A );
 %[IDX,C,SUMD,Kb]=best_kmeans(A1);
-i = input('Enter the number of cluster : ');
-m=i;
+m = input('Enter the number of cluster : ');
 s=zeros(m-1,2);
 s=int32(s); 
 a=1;
-for i= 2:m
+%%%%%for i= 2:m
 [ temp, h, l ] = pointdistance(A1);
 
-[ c, temp1, k, cen ] = cluster_2( l, h, temp, A1, i);
-%%[ c, temp1, k, cen ] = cluster_22( l, h, temp, A1, i); %%When the initial value of c.clus is 555
+% [ c, temp1, k, cen ] = cluster_2( l, h, temp, A1, i);
+[ c, temp1, cen ] = cluster_22(l, h, temp, A1, m); %%When the initial value of c.clus is 555
 %plotScree(A1, nk, h, l, temp);
 %[sse1,A1]=SSE(nk,c,A1);
 %for i=2:m
-[sse1, im1]=SSE(i,c,cen,A1);
-s(a,1)= i;
-s(a,2)=sse1;
-a=a+1;
-end
+% % % [sse1, im1]=SSE(i,c,cen,A1);
+% % % s(a,1)= i;
+% % % s(a,2)=sse1;
+% % % a=a+1;
+%%%%end
 hold on
 plot(s)
 plot(s, '.')
 xlabel('Number of clusters')
 ylabel('Within-cluster sum-of-squares')
 toc
-[f1,A1] = disp1(k,c,cen,A1);
+[f1,A1] = disp1(m,c,cen,A1);

@@ -1,9 +1,9 @@
 
-function [ c, temp, k , cen] = cluster_22( l, h, temp, A1, nk)
+function [ c, temp, cen] = cluster_22( l, h, temp, A1, nk)
     %UNTITLED Summary of this function goes here
     % Sir, please describe the function
     %   Detailed explanation goes here
-    [row,col] = size(temp);
+    [row, col] = size(temp);
     for i=1: nk
         c(i).clus = zeros(row,col);
         c(i).clus(:)= 555;
@@ -14,7 +14,7 @@ function [ c, temp, k , cen] = cluster_22( l, h, temp, A1, nk)
     end
     k=1;
     n=l;
-    groupSize = ceil((h-l)/(nk-1));
+    groupSize = ceil((h-l)/nk);
     fprintf('The value of grpsize is %i', groupSize);
     count=0;
    % c().centroid =0;%centroid
@@ -22,7 +22,7 @@ function [ c, temp, k , cen] = cluster_22( l, h, temp, A1, nk)
     while(n<h+1)
         for i=1:row
             for j=1:col
-                if temp(i,j)==n  
+                if temp(i,j)==n  % n is the diffVal obtained
                     if(count < groupSize)
                         c(k).clus(i,j)= A1(i,j);
                         temp(i,j)=999;
@@ -37,8 +37,23 @@ function [ c, temp, k , cen] = cluster_22( l, h, temp, A1, nk)
         end
         count=count+1;
         n=n+1;
-        cen(k)=int16(sum(c(k).clus(:))/nnz(c(k).clus(:)));
+%         cen(k)=int16(sum(c(k).clus(:))/nnz(c(k).clus(:)));
     end
+    
+    for z=1:nk
+       sum_centroid = 0; 
+       pixel_frequency = 0;
+       for i=1:row
+            for j=1:col
+                val = c(z).clus(i,j);
+                if (val ~= 555 && val ~= 0)
+                    sum_centroid = sum_centroid + val;
+                    pixel_frequency = pixel_frequency + 1;                    
+                end
+            end
+       end
+       cen(z) =  sum_centroid / pixel_frequency;
+    end    
      %fprintf('The value of k is %i', k);
      fprintf('\n');
     return

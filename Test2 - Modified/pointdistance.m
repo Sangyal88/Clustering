@@ -3,7 +3,8 @@ function [ temp, h, l ] = pointdistance(X)
     % Sir, please describe the function
     %   Detailed explanation goes here
     [row, col] = size(X);
-    temp= X(row,col);
+%     temp= X(row,col);
+    temp = X;
     for i = 1:row
         for j = 1 : col
             val = X(i,j);

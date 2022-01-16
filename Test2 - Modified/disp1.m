@@ -8,8 +8,8 @@ function [f1,A1] = disp1(k,c,cen,A1)
     for i=1:row 
         for j=1:col               
             for z = 1:k
-                if((c(z).clus(i,j))~=0)
-                %if((c(z).clus(i,j))~=555)  %to check if the pixel is of value 555
+%                 if((c(z).clus(i,j))~=0)
+                if((c(z).clus(i,j))~=555)  %to check if the pixel is of value 555
                     f1(i,j)=cen(z);
                     break;
                 end              
