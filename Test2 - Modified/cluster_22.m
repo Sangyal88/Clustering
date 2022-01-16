@@ -37,7 +37,6 @@ function [ c, temp, cen] = cluster_22( l, h, temp, A1, nk)
         end
         count=count+1;
         n=n+1;
-%         cen(k)=int16(sum(c(k).clus(:))/nnz(c(k).clus(:)));
     end
     
     for z=1:nk
