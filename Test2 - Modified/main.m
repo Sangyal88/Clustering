@@ -26,7 +26,7 @@ for i= 2:m
 [ temp, h, l ] = pointdistance(A1);
 
 [ c, temp1, k, cen ] = cluster_2( l, h, temp, A1, i);
-
+%%[ c, temp1, k, cen ] = cluster_22( l, h, temp, A1, i); %%When the initial value of c.clus is 555
 %plotScree(A1, nk, h, l, temp);
 %[sse1,A1]=SSE(nk,c,A1);
 %for i=2:m
