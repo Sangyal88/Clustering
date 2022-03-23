@@ -9,7 +9,8 @@ elseif (size(im,3) == 1)
 end
 imshow(im1);
 image=im1;
-M=max(im1,[],'all');
+Ma=max(im1);
+M=max(Ma);
 [row, col]=size(im1);
 T = zeros(256, 1);
  for i=1: 256
