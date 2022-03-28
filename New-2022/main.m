@@ -36,4 +36,14 @@ for i=1:row
     end
 end
 
+new = null(row,col);%code for trial
+for i=1:256
+    if (ind(i).totalPixels>0)
+        for z=1:ind(i).totalPixels
+            x= ind(i).pixelValues(z).r;
+            y= ind(i).pixelValues(z).c;
+            new(x,y)= i-1;
+        end
 
+    end
+end
