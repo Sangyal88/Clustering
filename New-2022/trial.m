@@ -69,5 +69,7 @@ for i=1:256
             cl(ci).cont(i) = ind(i).pixelValues.value;
         end
     end
-
+    for i = 1:ci
+       n(i).cont=nonzeros(cl(i).cont);
+    end
 end
