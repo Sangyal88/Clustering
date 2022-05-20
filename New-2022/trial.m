@@ -9,16 +9,12 @@ if (size(im,3) ~= 1)    % for color image size(im,3)==3
 elseif (size(im,3) == 1)
     im1 = im;
 end
-%imshow(im1);
-%ip=input('Enter the number of cluster : ');
-%fprintf('\n');
+
 image=im1;
 Ma=max(im1);
 M=max(Ma);
 [row, col]=size(im1);
-%for i= 1:100%start
-   %Ai=null(row,col);
-%end
+
 pixelIndex.r = 0;
 pixelIndex.c = 0;
 pixelIndex.value = 0;
@@ -30,11 +26,15 @@ for i=1: 256
     ind(i).diff_val = 0+(i-1);
     ind(i).totalPixels = 0;
     ind(i).pixelValues = pixelIndex([]); % creating an empty structs with pixelIndex
-    c(i).cluster = ([]);
-    cl(i).cont = zeros(10, 10);
+    ind(i).pixel_val = 0;
+    %c(i).cluster = ([]);
     %cl(i).cont = zeros(row, col);
+    %n(i).cont = ([]);
+    
 end
-
+for j=1:10 
+    t(j)=0;
+end
 
 for i=1:row
    for j=1:col
@@ -47,29 +47,69 @@ for i=1:row
         total_pixels = ind(diffval+1).totalPixels + 1;
         ind(diffval+1).totalPixels = total_pixels;
         ind(diffval+1).pixelValues(total_pixels) = pixelIndex;
-            
+        ind(diffval+1).pixel_val= pixelIndex.value;      
     end
 end
-r = input('Enter the radius : ');%The difference grouping
-count = 0;
 
+r = input('Enter the radius : ');%Input the range for the distance among he pixels
+count = 0;
+maxi=0;%Keeps the maximum pixel count for each radius group
 ci=1;
 r_temp=r;
-for i=1:256  
-    if (r_temp-i>=0)
+%------------Capurting the maximum pixel count value and the associated
+%pixel value for the radius group---------------%
+for i=1:256 
+    if (r_temp-i>=0)%checking the entered radius
         if (ind(i).totalPixels>0)
-            c(ci).cluster= cl(ci);
-            cl(ci).cont(i) = ind(i).pixelValues.value;
+           if(ind(i).totalPixels>maxi)
+               maxi=ind(i).totalPixels;%maximum total pixel count
+               t(ci)=ind(i).pixelValues.value;%pixel value of the highest pixel count
+           end           
+        end
+    else %if the radius exceeds
+        r_temp=r_temp+r;
+        ci = ci+1;
+        maxi=0;
+        if (ind(i).totalPixels>0)
+            if(ind(i).totalPixels>maxi)
+                maxi=ind(i).totalPixels;%maximum total pixel count
+                t(ci)=ind(i).pixelValues.value;%pixel value of the highest pixel count
+           end     
+        end
+    end
+    %for i = 1:ci
+      % n(i).cont = nonzeros(cl(i).cont);
+   % end
+end
+%[tax] = arrange(r,ind,row,col);
+%-------------------replacing the radius pixel values with the pixel values
+%of the highest pixel count pixel value-------------------%
+tax = zeros(row, col);
+%x=numel(t);
+r_temp=r;
+z=1;
+for q=1:256 
+    if (r_temp-q>=0)
+        if (ind(q).totalPixels>0)
+           for k=1:ind(q).totalPixels
+                x= ind(q).pixelValues(k).r;
+                y= ind(q).pixelValues(k).c;
+                tax(x,y)= t(z);%placing the pixel value in the new image matrix 
+                
+           end       
         end
     else
         r_temp=r_temp+r;
-        ci = ci+1;
-        if (ind(i).totalPixels>0)
-            c(ci).cluster= cl(ci);
-            cl(ci).cont(i) = ind(i).pixelValues.value;
+        z = z+1;
+        if (ind(q).totalPixels>0)
+            for k=1:ind(q).totalPixels
+                x= ind(q).pixelValues(k).r;
+                y= ind(q).pixelValues(k).c;
+                tax(x,y)= t(z);
+           end    
         end
     end
-    for i = 1:ci
-       n(i).cont=nonzeros(cl(i).cont);
-    end
+   
 end
+
+figure,imshow(uint8(tax));title('Final Image')
