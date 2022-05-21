@@ -113,3 +113,6 @@ for q=1:256
 end
 
 figure,imshow(uint8(tax));title('Final Image')
+[psnr]= PSNR(tax, image);
+fprintf('psnr value= %f',psnr);
+fprintf('\n');
