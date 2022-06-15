@@ -53,6 +53,17 @@ end
 
 r = input('Enter the radius : ');%Input the range for the distance among he pixels
 count = 0;
+%--------------------For counting the number of non zero total pixels------------%
+tl=0; 
+for t=1:256
+    if (ind(t).totalPixels>0)
+        tl=tl+1;
+    end
+end
+c = input('Enter number of clusters : ');
+cl_size=abs(tl/c);
+
+%---------------------------------------------------------------------------------%
 maxi=0;%Keeps the maximum pixel count for each radius group
 ci=1;
 r_temp=r;
