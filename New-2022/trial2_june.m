@@ -1,9 +1,10 @@
 clear
 %im = imread('Images/lenaColor.png');
-im = imread('Images/fruits.png');
+%im = imread('Images/fruits.png');
 %im = imread('Images/boat.png');
 %im = imread('Images/peppers.png');
 %im = imread('Images/hunter.tif');
+im = imread('Images/baboon.png');
 if (size(im,3) ~= 1)    % for color image size(im,3)==3
     im1 = rgb2gray(im);   %converting to grayscale
 elseif (size(im,3) == 1)
@@ -32,7 +33,8 @@ end
 for j=1:10 
     t(j)=0;
 end
-
+c = input('Enter number of clusters : ');
+tic
 for i=1:row
    for j=1:col
         val=image(i,j);
@@ -47,8 +49,6 @@ for i=1:row
         ind(diffval+1).pixel_val= pixelIndex.value;      
     end
 end
-
-
 count = 0;
 %--------------------For counting the number of non zero total pixels------------%
 tl=0; 
@@ -57,48 +57,57 @@ for t=1:256
         tl=tl+1;
     end
 end
-c = input('Enter number of clusters : ');
-cl_size=abs(tl/c);
+cl_size=int16(tl/c);
 
 %---------------------------------------------------------------------------------%
 maxi=0;%Keeps the maximum pixel count for each radius group
 ci=1;
 r_temp= cl_size;
+c=0;
 %------------Capurting the maximum pixel count value and the associated
 %pixel value for the radius group---------------%
+tic
 for i=1:256 
     if (r_temp-i>=0)%checking the entered cluster size
          count=count+1;%count increment
-        if (ind(i).totalPixels>0)
-           if(ind(i).totalPixels>maxi)
+        if (ind(i).totalPixels>0 && ind(i).totalPixels>maxi)
+           
                maxi=ind(i).totalPixels;%maximum total pixel count
                t(ci)=ind(i).pixelValues.value;%pixel value of the highest pixel count
-               if(count==1)%Checking if the maximum pixel count is the initial
-                   r_temp=r_temp-5;
-               elseif(count==r_temp)
-                   r_temp=r_temp+5;%Checking if the maximum pixel count is the last from the cluster size
-               end
-           end           
+               c=count;
+                      
         end
-    else %if the radius exceeds
+        if (r_temp-i==5 && count==1)
+            
+                fprintf('Enter 1\n');
+                r_temp=r_temp-5;
+                fprintf('Value 1 = %f\n',r_temp);
+            
+        elseif (count==cl_size && c==cl_size)
+            
+                fprintf('Enter 2\n');
+                r_temp=r_temp+5;
+                fprintf('Value 2 = %f\n',r_temp);
+            
+        end
+
+    else %if the cluster size exceeds
         r_temp=r_temp+cl_size;
         count=1;
         ci = ci+1;
         maxi=0;
-        if (ind(i).totalPixels>0)
-            if(ind(i).totalPixels>maxi)
+        if (ind(i).totalPixels>0 && ind(i).totalPixels>maxi)
+            
                 maxi=ind(i).totalPixels;%maximum total pixel count
                 t(ci)=ind(i).pixelValues.value;%pixel value of the highest pixel count
                 if(count==1)%Checking if the maximum pixel count is the initial
                    r_temp=r_temp-5;
                 end
-           end     
+              
         end
     end
-    %for i = 1:ci
-      % n(i).cont = nonzeros(cl(i).cont);
-   % end
 end
+toc
 %[tax] = arrange(r,ind,row,col);
 %-------------------replacing the radius pixel values with the pixel values
 %of the highest pixel count pixel value-------------------%
