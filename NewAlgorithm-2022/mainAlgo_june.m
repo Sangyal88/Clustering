@@ -74,7 +74,7 @@ for i=1:256
            
                maxi=ind(i).totalPixels;%maximum total pixel count
                t(ci)=ind(i).pixelValues.value;%pixel value of the highest pixel count
-               rec = r_temp-i;%records the position of the highest frequency pixel in the index table
+               rec = r_temp-i; %records the position of the highest frequency pixel in the cluster
                c=count;
                       
         end
