@@ -102,9 +102,8 @@ for i=1:256
             
                 maxi=ind(i).totalPixels;%maximum total pixel count
                 t(ci)=ind(i).pixelValues.value;%pixel value of the highest pixel count
-                if(count==1)%Checking if the maximum pixel count is the initial
-                   r_temp=r_temp-5;
-                end
+                rec=r_temp-i;
+                c=count;
               
         end
     end
