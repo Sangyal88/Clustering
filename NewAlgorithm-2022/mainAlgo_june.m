@@ -81,13 +81,13 @@ for i=1:256
         if (rec== cl_size-1 && c== cl_size)
             
                 
-                r_temp=r_temp-5;
+                r_temp=r_temp-5; %Decrease the size of the current cluster by 5 if the highest frequency pixel is in the initial position of the cluster
               
             
         elseif (rec==0 && c==cl_size)
             
                
-                r_temp=r_temp+5;
+                r_temp=r_temp+5; %Inecrease the size of the current cluster by 5 if the highest frequency pixel is in the last position of the cluster
                 
             
         end
