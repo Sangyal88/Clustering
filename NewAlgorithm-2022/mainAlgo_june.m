@@ -74,25 +74,27 @@ for i=1:256
            
                maxi=ind(i).totalPixels;%maximum total pixel count
                t(ci)=ind(i).pixelValues.value;%pixel value of the highest pixel count
+               rec = r_temp-i;%records the position of the highest frequency pixel in the index table
                c=count;
                       
         end
-        if (r_temp-i==5 && count==1)
+        if (rec== cl_size-1 && c== cl_size)
             
-                fprintf('Enter 1\n');
+                
                 r_temp=r_temp-5;
-                fprintf('Value 1 = %f\n',r_temp);
+              
             
-        elseif (count==cl_size && c==cl_size)
+        elseif (rec==0 && c==cl_size)
             
-                fprintf('Enter 2\n');
+               
                 r_temp=r_temp+5;
-                fprintf('Value 2 = %f\n',r_temp);
+                
             
         end
 
     else %if the cluster size exceeds
         r_temp=r_temp+cl_size;
+        rec = 0;
         count=1;
         ci = ci+1;
         maxi=0;
